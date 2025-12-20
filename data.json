@@ -46,6 +46,19 @@
           "SURVIVAL FAIL: Sabertooth kill, hide lost in river."
         ]
       }
+    
+    {
+  "type": "article",
+  "title": "ENVIRONMENTAL CONCERNS IN ROME",
+  "image": {
+    "src": "images/rome-garbage.png",
+    "alt": "Garbage accumulation in Rome"
+  },
+  "paragraphs": [
+    "Qin Shi Huang has raised alarms regarding massive garbage accumulation in Rome.",
+    "The debate has sparked the server's first major environmental crisis."
+  ]
+} 
     ]
   }
 }
