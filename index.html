@@ -1,12 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Traumatic News</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Traumatic News</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Lora:ital,wght@0,400;0,700;1,400&family=Special+Elite&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Lora:ital,wght@0,400;0,700;1,400&family=Special+Elite&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --paper:#f4e4bc;
+  --ink:#2b1d0e;
+  --accent:#8a2323;
+  --border:3px double var(--ink);
+}
+
+body{
+  background:#333;
+  margin:0;
+  padding:20px;
+  display:flex;
+  justify-content:center;
+  font-family:'Lora',serif;
+  color:var(--ink);
+}
+
+.newspaper{
+  width:1200px;
+  min-height:1400px;
+  background:var(--paper);
+  background-image:url("https://www.transparenttextures.com/patterns/aged-paper.png");
+  padding:30px;
+  position:relative;
+  box-shadow:0 0 20px rgba(0,0,0,.5);
+  border:1px solid #d3c5a3;
+}
+
+.corner{
+  position:absolute;
+  width:40px;height:40px;
+  border:4px solid var(--ink);
+}
+.tl{top:10px;left:10px;border-right:none;border-bottom:none;}
+.tr{top:10px;right:10px;border-left:none;border-bottom:none;}
+.bl{bottom:10px;left:10px;border-right:none;border-top:none;}
+.br{bottom:10px;right:10px;border-left:none;border-top:none;}
+
+header{
+  text-align:center;
+  border-bottom:5px solid var(--ink);
+  padding-bottom:15px;
+  margin-bottom:25px;
+}
+
+.masthead{
+  font-family:'Cinzel',serif;
+  font-size:5em;
+  margin:0;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  text-shadow:2px 2px 0 #d3c5a3;
+}
+
+.sub{
+  font-family:'Special Elite',cursive;
+  font-size:1.4em;
+  border-top:var(--border);
+  border-bottom:var(--border);
+  padding:10px 0;
+  margin-top:10px;
+  display:flex;
+  justify-content:space-between;
+}
+
+.content{
+  display:flex;
+  gap:25px;
+}
+
+.col{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  gap:25px;
+}
+
+.narrow{flex:.8;}
+
+article{
+  border-bottom:1px dashed var(--ink);
+  padding-bottom:15px;
+}
+article:last-child{border:none;}
+
+.headline{
+  font-family:'Cinzel',serif;
+  font-weight:900;
+  font-size:1.8em;
+  margin:10px 0;
+}
+.major{
+  font-size:2.5em;
+  text-transform:uppercase;
+}
+
+.subhead{
+  font-style:italic;
+  font-weight:bold;
+  color:var(--accent);
+  margin-bottom:10px;
+}
+
+p{
+  font-size:1.1em;
+  line-height:1.4;
+  text-align:justify;
+}
+
+.decree{
+  border:4px solid var(--ink);
+  padding:20px;
+  background:rgba(138,35,35,.1);
+  text-align:center;
+}
+.decree h2{
+  color:var(--accent);
+  text-decoration:underline;
+}
+
+.snippets{
+  background:rgba(0,0,0,.05);
+  padding:15px;
+  border:1px dotted var(--ink);
+  font-family:'Special Elite',cursive;
+  font-size:.9em;
+}
+
+img{
+  width:100%;
+  border:3px solid var(--ink);
+  margin:10px 0;
+  filter:sepia(.4) contrast(1.2);
+}
+
+.image-placeholder{
+  width:100%;
+  height:200px;
+  border:3px solid var(--ink);
+  background:repeating-linear-gradient(
+    45deg,#d3c5a3,#d3c5a3 10px,#c2b492 10px,#c2b492 20px
+  );
+  display:none;
+  align-items:center;
+  justify-content:center;
+  font-family:'Special Elite',cursive;
+  color:var(--accent);
+}
+
+footer{
+  margin-top:30px;
+  border-top:5px solid var(--ink);
+  padding-top:15px;
+  text-align:center;
+  font-family:'Special Elite',cursive;
+  font-size:.9em;
+}
+</style>
 </head>
 
 <body>
@@ -35,6 +194,61 @@
   <footer id="footer"></footer>
 </div>
 
-<script src="render.js"></script>
+<script>
+fetch("data.json")
+.then(r=>r.json())
+.then(data=>{
+  masthead.textContent=data.masthead;
+  issue.textContent=data.issue;
+  weather.textContent=data.weather;
+  footer.textContent=data.footer;
+
+  date.textContent=new Date().toLocaleDateString("en-US");
+
+  renderCol("col-left",data.columns.left);
+  renderCol("col-middle",data.columns.middle);
+  renderCol("col-right",data.columns.right);
+});
+
+function renderCol(id,blocks){
+  const c=document.getElementById(id);
+  blocks.forEach(b=>{
+    if(b.type==="article")c.append(renderArticle(b));
+    if(b.type==="decree")c.append(renderDecree(b));
+    if(b.type==="snippets")c.append(renderSnippets(b));
+  });
+}
+
+function renderArticle(a){
+  const el=document.createElement("article");
+  const img=a.image?`
+    <img src="${a.image.src}" alt="${a.image.alt||""}"
+     onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <div class="image-placeholder">IMAGE UNAVAILABLE</div>`:"";
+  el.innerHTML=`
+    <h2 class="headline ${a.major?"major":""}">${a.title}</h2>
+    ${a.subhead?`<div class="subhead">${a.subhead}</div>`:""}
+    ${img}
+    ${a.paragraphs.map(p=>`<p>${p}</p>`).join("")}
+  `;
+  return el;
+}
+
+function renderDecree(d){
+  const el=document.createElement("div");
+  el.className="decree";
+  el.innerHTML=`<h2>${d.title}</h2>${d.paragraphs.map(p=>`<p>${p}</p>`).join("")}`;
+  return el;
+}
+
+function renderSnippets(s){
+  const el=document.createElement("div");
+  el.className="snippets";
+  el.innerHTML=`<h3 style="text-align:center">TELEGRAPH SNIPPETS</h3>
+  <ul>${s.items.map(i=>`<li>${i}</li>`).join("")}</ul>`;
+  return el;
+}
+</script>
+
 </body>
 </html>
