@@ -1,32 +1,32 @@
-:root{
-  --paper:#f4e4bc;
-  --ink:#2b1d0e;
-  --accent:#8a2323;
-  --border:3px double var(--ink);
+:root {
+  --paper: #f4e4bc;
+  --ink: #2b1d0e;
+  --accent: #8a2323;
+  --border: 3px double var(--ink);
 }
 
-body{
+body {
   background:#333;
   margin:0;
   padding:20px;
   display:flex;
   justify-content:center;
-  font-family:'Lora',serif;
+  font-family:'Lora', serif;
   color:var(--ink);
 }
 
-.newspaper{
+.newspaper {
   width:1200px;
   min-height:1400px;
   background:var(--paper);
   background-image:url("https://www.transparenttextures.com/patterns/aged-paper.png");
   padding:30px;
-  position:relative;
   box-shadow:0 0 20px rgba(0,0,0,.5);
   border:1px solid #d3c5a3;
+  position:relative;
 }
 
-/* Corners */
+/* corners */
 .corner{
   position:absolute;
   width:40px;
@@ -38,6 +38,7 @@ body{
 .bl{bottom:10px;left:10px;border-right:none;border-top:none;}
 .br{bottom:10px;right:10px;border-left:none;border-top:none;}
 
+/* header */
 header{
   text-align:center;
   border-bottom:5px solid var(--ink);
@@ -46,16 +47,16 @@ header{
 }
 
 .masthead{
-  font-family:'Cinzel',serif;
+  font-family:'Cinzel', serif;
   font-size:5em;
-  letter-spacing:2px;
   margin:0;
+  letter-spacing:2px;
   text-transform:uppercase;
   text-shadow:2px 2px 0 #d3c5a3;
 }
 
 .sub{
-  font-family:'Special Elite',cursive;
+  font-family:'Special Elite', cursive;
   font-size:1.4em;
   border-top:var(--border);
   border-bottom:var(--border);
@@ -65,6 +66,7 @@ header{
   justify-content:space-between;
 }
 
+/* main layout */
 .content{
   display:flex;
   gap:25px;
@@ -76,8 +78,12 @@ header{
   flex-direction:column;
   gap:25px;
 }
-.narrow{flex:.8;}
 
+.narrow{
+  flex:0.8;
+}
+
+/* articles */
 article{
   border-bottom:1px dashed var(--ink);
   padding-bottom:15px;
@@ -85,12 +91,13 @@ article{
 article:last-child{border:none;}
 
 .headline{
-  font-family:'Cinzel',serif;
+  font-family:'Cinzel', serif;
   font-weight:900;
   font-size:1.8em;
   margin:10px 0;
   line-height:1.1;
 }
+
 .major{
   font-size:2.5em;
   text-transform:uppercase;
@@ -110,33 +117,19 @@ p{
   margin:6px 0;
 }
 
+/* decree */
 .decree{
   border:4px solid var(--ink);
   padding:20px;
   background:rgba(138,35,35,.1);
   text-align:center;
 }
+
 .decree h2{
   color:var(--accent);
   text-decoration:underline;
   margin-top:0;
 }
 
-.snippets{
-  background:rgba(0,0,0,.05);
-  padding:15px;
-  border:1px dotted var(--ink);
-  font-family:'Special Elite',cursive;
-  font-size:.9em;
-}
-.snippets ul{padding-left:20px;}
-.snippets li{margin-bottom:10px;}
-
-footer{
-  margin-top:30px;
-  border-top:5px solid var(--ink);
-  padding-top:15px;
-  text-align:center;
-  font-family:'Special Elite',cursive;
-  font-size:.9em;
-}
+/* snippets */
+.snip
