@@ -44,6 +44,14 @@ https://<your-username>.github.io/Traumatic-News/
   - Verify `data.json` is accessible at:
     `https://<your-username>.github.io/Traumatic-News/data.json`
 
+## Cache Issue (Very Important)
+
+- GitHub Pages and browsers may cache old versions of HTML, CSS, or JavaScript files.
+- If you update files but the site still shows old or broken content:
+  - Press `Ctrl + Shift + R` (Windows / Linux)
+  - Press `Cmd + Shift + R` (macOS)
+- This forces a hard reload and clears the browser cache.
+
 ---
 
 ## 🔄 Updating Content
