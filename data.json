@@ -1,34 +1,51 @@
 {
   "masthead": "Traumatic News",
-  "issue": "VOL. I - The Age of Steel & Steam",
-  "date": "15/12/2025",
-  "weather": "Optimal for Blasting",
+  "issue": "VOL. I – The Age of Steel & Steam",
+  "weather": "Weather: Optimal for Blasting",
+  "footer": "The Traumatic News is printed weekly (or whenever we feel like it).",
 
-  "articles": [
-    {
-      "title": "TRAGEDY AT MORIA: MEGA ROOM COLLAPSE!",
-      "subhead": "Mining Operations Halted; Ducks Mourned.",
-      "image": "images/moria.png",
-      "paragraphs": [
-        "Disaster struck the Dwarven halls of Moria yesterday.",
-        "While no Dwarves were injured, two ducks were lost."
-      ]
-    },
-    {
-      "title": "DWARVEN INGENUITY BREACHES NEW FRONTIERS",
-      "subhead": "",
-      "image": "",
-      "paragraphs": [
-        "Engineers celebrated the invention of the Water Wheel.",
-        "Blast Furnace efficiency has reached its peak."
-      ]
-    }
-  ],
+  "columns": {
+    "left": [
+      {
+        "type": "article",
+        "major": true,
+        "title": "TRAGEDY AT MORIA: MEGA ROOM COLLAPSE!",
+        "subhead": "Mining Operations Halted on 2nd Floor; Ducks Mourned.",
+        "paragraphs": [
+          "Disaster struck the Dwarven halls of Moria yesterday.",
+          "While miraculously no Dwarves were injured, two ducks were lost."
+        ]
+      },
+      {
+        "type": "article",
+        "title": "DWARVEN INGENUITY BREACHES NEW FRONTIERS",
+        "paragraphs": [
+          "Engineers celebrated the invention of the Water Wheel.",
+          "Blast Furnace efficiency has reached its peak."
+        ]
+      }
+    ],
 
-  "snippets": [
-    "LOCAL WITCH DECREE: All must receive moss.",
-    "HERMIT REGRETS choosing to live too far away.",
-    "SURVIVAL FAIL: Sabertooth kill, hide lost in river."
-  ]
+    "middle": [
+      {
+        "type": "decree",
+        "title": "OFFICIAL DECREE: THE INDUSTRIAL PAUSE",
+        "paragraphs": [
+          "Technological progression is hereby BLOCKADED at Medium Voltage (MV).",
+          "Today, we build in Steel."
+        ]
+      }
+    ],
+
+    "right": [
+      {
+        "type": "snippets",
+        "items": [
+          "LOCAL WITCH DECREE: All must receive moss.",
+          "HERMIT REGRETS choosing to live too far away.",
+          "SURVIVAL FAIL: Sabertooth kill, hide lost in river."
+        ]
+      }
+    ]
+  }
 }
-
