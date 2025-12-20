@@ -1,47 +1,221 @@
-<!doctype html>
-<html lang="vi">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Traumatic News</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Traumatic News</title>
 
-  <!-- Fonts (có thể đổi sau) -->
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Lora:wght@400;700&family=Special+Elite&display=swap" rel="stylesheet">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Lora:ital,wght@0,400;0,700;1,400&family=Special+Elite&display=swap" rel="stylesheet">
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="style.css">
+  <style>
+    :root{
+      --paper:#f4e4bc;
+      --ink:#2b1d0e;
+      --accent:#8a2323;
+      --border:3px double var(--ink);
+    }
+
+    body{
+      background:#333;
+      margin:0;
+      padding:20px;
+      display:flex;
+      justify-content:center;
+      font-family:'Lora',serif;
+      color:var(--ink);
+    }
+
+    .newspaper{
+      width:1200px;
+      min-height:1400px;
+      background:var(--paper);
+      background-image:url("https://www.transparenttextures.com/patterns/aged-paper.png");
+      padding:30px;
+      position:relative;
+      box-shadow:0 0 20px rgba(0,0,0,.5);
+      border:1px solid #d3c5a3;
+    }
+
+    /* Corners */
+    .corner{
+      position:absolute;
+      width:40px;
+      height:40px;
+      border:4px solid var(--ink);
+    }
+    .tl{top:10px;left:10px;border-right:none;border-bottom:none;}
+    .tr{top:10px;right:10px;border-left:none;border-bottom:none;}
+    .bl{bottom:10px;left:10px;border-right:none;border-top:none;}
+    .br{bottom:10px;right:10px;border-left:none;border-top:none;}
+
+    header{
+      text-align:center;
+      border-bottom:5px solid var(--ink);
+      padding-bottom:15px;
+      margin-bottom:25px;
+    }
+
+    .masthead{
+      font-family:'Cinzel',serif;
+      font-size:5em;
+      letter-spacing:2px;
+      margin:0;
+      text-transform:uppercase;
+      text-shadow:2px 2px 0 #d3c5a3;
+    }
+
+    .sub{
+      font-family:'Special Elite',cursive;
+      font-size:1.4em;
+      border-top:var(--border);
+      border-bottom:var(--border);
+      padding:10px 0;
+      margin-top:10px;
+      display:flex;
+      justify-content:space-between;
+    }
+
+    .content{
+      display:flex;
+      gap:25px;
+    }
+
+    .col{
+      flex:1;
+      display:flex;
+      flex-direction:column;
+      gap:25px;
+    }
+    .narrow{flex:.8;}
+
+    article{
+      border-bottom:1px dashed var(--ink);
+      padding-bottom:15px;
+    }
+    article:last-child{border:none;}
+
+    .headline{
+      font-family:'Cinzel',serif;
+      font-weight:900;
+      font-size:1.8em;
+      margin:10px 0;
+      line-height:1.1;
+    }
+    .major{
+      font-size:2.5em;
+      text-transform:uppercase;
+    }
+
+    .subhead{
+      font-style:italic;
+      font-weight:bold;
+      color:var(--accent);
+      margin-bottom:10px;
+    }
+
+    p{
+      font-size:1.1em;
+      line-height:1.4;
+      text-align:justify;
+      margin:6px 0;
+    }
+
+    .decree{
+      border:4px solid var(--ink);
+      padding:20px;
+      background:rgba(138,35,35,.1);
+      text-align:center;
+    }
+    .decree h2{
+      color:var(--accent);
+      text-decoration:underline;
+      margin-top:0;
+    }
+
+    .snippets{
+      background:rgba(0,0,0,.05);
+      padding:15px;
+      border:1px dotted var(--ink);
+      font-family:'Special Elite',cursive;
+      font-size:.9em;
+    }
+    .snippets ul{padding-left:20px;}
+    .snippets li{margin-bottom:10px;}
+
+    img{
+      width:100%;
+      border:3px solid var(--ink);
+      margin:10px 0;
+      filter:sepia(.4) contrast(1.2);
+    }
+
+    footer{
+      margin-top:30px;
+      border-top:5px solid var(--ink);
+      padding-top:15px;
+      text-align:center;
+      font-family:'Special Elite',cursive;
+      font-size:.9em;
+    }
+  </style>
 </head>
 
 <body>
+<div class="newspaper">
+  <div class="corner tl"></div>
+  <div class="corner tr"></div>
+  <div class="corner bl"></div>
+  <div class="corner br"></div>
 
-  <!-- Nền tối bên ngoài -->
-  <div class="page-wrapper">
+  <header>
+    <h1 class="masthead">Traumatic News</h1>
+    <div class="sub">
+      <span>VOL. I – The Age of Steel & Steam</span>
+      <span id="date"></span>
+      <span>Weather: Optimal for Blasting</span>
+    </div>
+  </header>
 
-    <!-- Tờ báo -->
-    <div class="newspaper-container">
+  <!-- ===== CONTENT ===== -->
+<body>
+<div class="newspaper">
+  <div class="corner tl"></div>
+  <div class="corner tr"></div>
+  <div class="corner bl"></div>
+  <div class="corner br"></div>
 
-      <!-- Header -->
-      <header class="newspaper-header">
-        <h1 class="masthead"></h1>
+  <header>
+    <h1 class="masthead" id="masthead"></h1>
+    <div class="sub">
+      <span id="issue"></span>
+      <span id="date"></span>
+      <span id="weather"></span>
+    </div>
+  </header>
 
-        <div class="sub-masthead">
-          <span class="issue"></span>
-          <span class="date"></span>
-          <span class="weather"></span>
-        </div>
-      </header>
+  <div class="content">
+    <div class="col" id="col-left"></div>
+    <div class="col" id="col-middle"></div>
+    <div class="col narrow" id="col-right"></div>
+  </div>
 
-      <!-- Nội dung chính -->
-      <main class="main-content">
+  <footer id="footer"></footer>
+</div>
 
-        <!-- Cột bài viết -->
-        <section class="articles" id="articles">
-          <!-- JS sẽ render article ở đây -->
-        </section>
+<script src="render.js"></script>
+</body>
 
-        <!-- Cột tin ngắn -->
-        <aside class="sidebar">
-          <div class="news-snippets">
-            <h3>TELEGRAPH SNIPPETS</h3>
-            <ul id="snippets">
-              <!-- JS sẽ
+  <!-- ===== AUTO DATE ===== -->
+<script>
+  const d = new Date();
+  const fmt = d.toLocaleDateString("en-US", {
+    month: "2-digit",
+    day: "2-digit",
+    year: "numeric"
+  });
+  document.getElementById("date").textContent = fmt;
+</script>
+
+</body>
+</html>
