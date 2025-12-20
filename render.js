@@ -2,41 +2,36 @@ fetch("data.json")
   .then(r => r.json())
   .then(data => {
 
-    /* ===== HEADER ===== */
+    // Header
     document.getElementById("masthead").textContent = data.masthead;
     document.getElementById("issue").textContent = data.issue;
     document.getElementById("weather").textContent = data.weather;
+    document.getElementById("footer").textContent = data.footer;
 
     const d = new Date();
     document.getElementById("date").textContent =
-      d.toLocaleDateString("en-US", { month:"2-digit", day:"2-digit", year:"numeric" });
+      d.toLocaleDateString("en-US", {
+        month: "2-digit",
+        day: "2-digit",
+        year: "numeric"
+      });
 
-    document.getElementById("footer").textContent = data.footer;
-
-    /* ===== RENDER COLUMNS ===== */
+    // Columns
     renderColumn("col-left", data.columns.left);
     renderColumn("col-middle", data.columns.middle);
     renderColumn("col-right", data.columns.right);
-  });
+  })
+  .catch(err => console.error("Render error:", err));
 
 
 function renderColumn(id, blocks) {
   const col = document.getElementById(id);
-
   blocks.forEach(b => {
-    if (b.type === "article") {
-      col.appendChild(renderArticle(b));
-    }
-    if (b.type === "decree") {
-      col.appendChild(renderDecree(b));
-    }
-    if (b.type === "snippets") {
-      col.appendChild(renderSnippets(b));
-    }
+    if (b.type === "article") col.appendChild(renderArticle(b));
+    if (b.type === "decree") col.appendChild(renderDecree(b));
+    if (b.type === "snippets") col.appendChild(renderSnippets(b));
   });
 }
-
-/* ===== BLOCK TYPES ===== */
 
 function renderArticle(a) {
   const el = document.createElement("article");
