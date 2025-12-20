@@ -35,11 +35,26 @@ function renderColumn(id, blocks) {
 
 function renderArticle(a) {
   const el = document.createElement("article");
+
+  let imageHTML = "";
+  if (a.image && a.image.src) {
+    imageHTML = `
+      <img src="${a.image.src}"
+           alt="${a.image.alt || ""}"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+      <div class="image-placeholder" style="display:none;">
+        IMAGE UNAVAILABLE
+      </div>
+    `;
+  }
+
   el.innerHTML = `
     <h2 class="headline ${a.major ? "major" : ""}">${a.title}</h2>
     ${a.subhead ? `<div class="subhead">${a.subhead}</div>` : ""}
+    ${imageHTML}
     ${a.paragraphs.map(p => `<p>${p}</p>`).join("")}
   `;
+
   return el;
 }
 
