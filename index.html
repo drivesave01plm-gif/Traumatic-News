@@ -196,59 +196,71 @@ footer{
 
 <script>
 fetch("data.json")
-.then(r=>r.json())
-.then(data=>{
-  masthead.textContent=data.masthead;
-  issue.textContent=data.issue;
-  weather.textContent=data.weather;
-  footer.textContent=data.footer;
+.then(r => r.json())
+.then(data => {
+  document.getElementById("masthead").textContent = data.masthead;
+  document.getElementById("issue").textContent = data.issue;
+  document.getElementById("weather").textContent = data.weather;
+  document.getElementById("footer").textContent = data.footer;
+  document.getElementById("date").textContent =
+    new Date().toLocaleDateString("en-US");
 
-  date.textContent=new Date().toLocaleDateString("en-US");
-
-  renderCol("col-left",data.columns.left);
-  renderCol("col-middle",data.columns.middle);
-  renderCol("col-right",data.columns.right);
+  renderCol("col-left", data.columns.left);
+  renderCol("col-middle", data.columns.middle);
+  renderCol("col-right", data.columns.right);
+})
+.catch(err => {
+  console.error("DATA LOAD ERROR:", err);
 });
 
-function renderCol(id,blocks){
-  const c=document.getElementById(id);
-  blocks.forEach(b=>{
-    if(b.type==="article")c.append(renderArticle(b));
-    if(b.type==="decree")c.append(renderDecree(b));
-    if(b.type==="snippets")c.append(renderSnippets(b));
+function renderCol(id, blocks){
+  const c = document.getElementById(id);
+  blocks.forEach(b => {
+    if (b.type === "article") c.append(renderArticle(b));
+    if (b.type === "decree") c.append(renderDecree(b));
+    if (b.type === "snippets") c.append(renderSnippets(b));
   });
 }
 
 function renderArticle(a){
-  const el=document.createElement("article");
-  const img=a.image?`
-    <img src="${a.image.src}" alt="${a.image.alt||""}"
-     onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-    <div class="image-placeholder">IMAGE UNAVAILABLE</div>`:"";
-  el.innerHTML=`
-    <h2 class="headline ${a.major?"major":""}">${a.title}</h2>
-    ${a.subhead?`<div class="subhead">${a.subhead}</div>`:""}
+  const el = document.createElement("article");
+
+  const img = a.image ? `
+    <img src="${a.image.src}" alt="${a.image.alt || ""}"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <div class="image-placeholder">IMAGE UNAVAILABLE</div>
+  ` : "";
+
+  el.innerHTML = `
+    <h2 class="headline ${a.major ? "major" : ""}">${a.title}</h2>
+    ${a.subhead ? `<div class="subhead">${a.subhead}</div>` : ""}
     ${img}
-    ${a.paragraphs.map(p=>`<p>${p}</p>`).join("")}
+    ${a.paragraphs.map(p => `<p>${p}</p>`).join("")}
   `;
   return el;
 }
 
 function renderDecree(d){
-  const el=document.createElement("div");
-  el.className="decree";
-  el.innerHTML=`<h2>${d.title}</h2>${d.paragraphs.map(p=>`<p>${p}</p>`).join("")}`;
+  const el = document.createElement("div");
+  el.className = "decree";
+  el.innerHTML = `
+    <h2>${d.title}</h2>
+    ${d.paragraphs.map(p => `<p>${p}</p>`).join("")}
+  `;
   return el;
 }
 
 function renderSnippets(s){
-  const el=document.createElement("div");
-  el.className="snippets";
-  el.innerHTML=`<h3 style="text-align:center">TELEGRAPH SNIPPETS</h3>
-  <ul>${s.items.map(i=>`<li>${i}</li>`).join("")}</ul>`;
+  const el = document.createElement("div");
+  el.className = "snippets";
+  el.innerHTML = `
+    <h3 style="text-align:center">TELEGRAPH SNIPPETS</h3>
+    <ul>${s.items.map(i => `<li>${i}</li>`).join("")}</ul>
+  `;
   return el;
 }
 </script>
+
 
 </body>
 </html>
