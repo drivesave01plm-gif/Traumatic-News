@@ -1,77 +1,58 @@
-{
-  "masthead": "Traumatic News",
-  "issue": "VOL. I – The Age of Steel & Steam",
-  "weather": "Weather: Optimal for Blasting",
-  "footer": "The Traumatic News is printed weekly (or whenever we feel like it).",
+name: Discord News Publisher
 
-  "columns": {
-    "left": [
-      {
-        "type": "article",
-        "major": true,
-        "title": "TRAGEDY AT MORIA: MEGA ROOM COLLAPSE!",
-        "subhead": "Mining Operations Halted on 2nd Floor; Ducks Mourned.",
-        "image": {
-          "src": "https://drivesave01plm-gif.github.io/Traumatic-News/images/test.jpg",
-          "alt": "Collapsed mining chamber in Moria"
-        },
-        "paragraphs": [
-          "Disaster struck the Dwarven halls of Moria yesterday.",
-          "While miraculously no Dwarves were injured, two ducks were lost."
-        ]
-      },
-      {
-        "type": "article",
-        "title": "DWARVEN INGENUITY BREACHES NEW FRONTIERS",
-        "paragraphs": [
-          "Engineers celebrated the invention of the Water Wheel.",
-          "Blast Furnace efficiency has reached its peak."
-        ]
-      }
-    ],
+on:
+  push:
+    branches:
+      - main
 
-    "middle": [
-      {
-        "type": "decree",
-        "title": "OFFICIAL DECREE: THE INDUSTRIAL PAUSE",
-        "paragraphs": [
-          "HEAR YE! By order of the Server Administration.",
-          "Technological progression is hereby BLOCKADED at Medium Voltage (MV).",
-          "Today, we build in Steel."
-        ]
-      },
-      {
-        "type": "article",
-        "title": "THE GREAT ROMAN TRADE HUB",
-        "paragraphs": [
-          "A massive trade hub has been announced for Rome.",
-          "Neighbors are concerned."
-        ]
-      }
-    ],
+jobs:
+  publish:
+    runs-on: ubuntu-latest
 
-    "right": [
-      {
-        "type": "article",
-        "title": "ENVIRONMENTAL CONCERNS IN ROME",
-        "image": {
-          "src": "images/test.jpg",
-          "alt": "Garbage accumulation in Rome"
-        },
-        "paragraphs": [
-          "Qin Shi Huang has raised alarms regarding massive garbage accumulation.",
-          "The server's first major environmental debate has begun."
-        ]
-      },
-      {
-        "type": "snippets",
-        "items": [
-          "LOCAL WITCH DECREE: All must receive moss.",
-          "HERMIT REGRETS choosing to live too far away.",
-          "SURVIVAL FAIL: Sabertooth kill, hide lost in river.",
-          "SPA DAY GONE WRONG: Tashania stuck in thermal spring."
-        ]
-      }
-    ]
-  }
-}
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Build Discord payload
+        run: |
+          TITLE=$(jq -r '.columns.left[] | select(.major==true) | .title' data.json)
+          SUBHEAD=$(jq -r '.columns.left[] | select(.major==true) | .subhead // ""' data.json)
+          IMAGE=$(jq -r '.columns.left[] | select(.major==true) | .image.src // ""' data.json)
+          SITE="https://drivesave01plm-gif.github.io/Traumatic-News/"
+
+          jq -n \
+          --arg title "$TITLE" \
+          --arg desc "$SUBHEAD" \
+          --arg img "$IMAGE" \
+          --arg site "$SITE" \
+          '{
+            content: "<@&ROLE_ID> 📰 **NEW ISSUE RELEASED**",
+            embeds: [
+              {
+                title: $title,
+                url: $site,
+                description: $desc,
+                color: 9127187,
+                image: { url: $img },
+                footer: {
+                  text: "Traumatic News • Auto published"
+                }
+              }
+            ]
+          }' > payload.json
+
+      - name: Send to Discord (create thread)
+        run: |
+          curl -X POST "$DISCORD_WEBHOOK?wait=true" \
+            -H "Content-Type: application/json" \
+            --data @payload.json \
+          | jq -r '.id' > message_id.txt
+
+          MSG_ID=$(cat message_id.txt)
+
+          curl -X POST "$DISCORD_WEBHOOK/threads" \
+            -H "Content-Type: application/json" \
+            -d "{\"name\":\"📰 $TITLE\",\"message_id\":\"$MSG_ID\"}"
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+          ROLE_ID: ${{ secrets.DISCORD_ROLE_ID }}
