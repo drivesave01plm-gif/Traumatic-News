@@ -1,0 +1,41 @@
+body {
+  background:#333;
+  font-family: "Times New Roman", serif;
+}
+
+.newspaper-container {
+  width: 1100px;
+  margin: 20px auto;
+  background: #f4e4bc;
+  padding: 30px;
+}
+
+.masthead {
+  text-align: center;
+  font-size: 64px;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+.sub-masthead {
+  display: flex;
+  justify-content: space-between;
+  border-top: 3px double #000;
+  border-bottom: 3px double #000;
+  padding: 6px 0;
+  margin-bottom: 20px;
+}
+
+article {
+  margin-bottom: 25px;
+}
+
+.headline {
+  font-size: 28px;
+  margin-bottom: 6px;
+}
+
+.subhead {
+  font-style: italic;
+  margin-bottom: 8px;
+}
