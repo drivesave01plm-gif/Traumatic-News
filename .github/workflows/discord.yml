@@ -1,4 +1,4 @@
-name: Notify Discord
+name: Notify Discord (Rich Embed)
 
 on:
   push:
@@ -8,11 +8,40 @@ on:
 jobs:
   notify:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Send update to Discord
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Read data.json and send Discord embed
         run: |
-          curl -X POST "${{ secrets.DISCORD_WEBHOOK }}" \
-          -H "Content-Type: application/json" \
-          -d '{
-            "content": "📰 **Traumatic News updated!**\n🔗 https://drivesave01plm-gif.github.io/Traumatic-News/"
-          }'
+          TITLE=$(jq -r '.columns.left[] | select(.major==true) | .title' data.json)
+          SUBHEAD=$(jq -r '.columns.left[] | select(.major==true) | .subhead' data.json)
+          IMAGE=$(jq -r '.columns.left[] | select(.major==true) | .image.src // empty' data.json)
+          SITE_URL="https://drivesave01plm-gif.github.io/Traumatic-News/"
+
+          jq -n \
+          --arg title "$TITLE" \
+          --arg sub "$SUBHEAD" \
+          --arg img "$IMAGE" \
+          --arg url "$SITE_URL" \
+          '{
+            embeds: [
+              {
+                title: $title,
+                description: $sub,
+                url: $url,
+                color: 9127187,
+                image: { url: $img },
+                footer: {
+                  text: "Traumatic News • Auto published from GitHub"
+                }
+              }
+            ]
+          }' > payload.json
+
+          curl -X POST "$DISCORD_WEBHOOK" \
+            -H "Content-Type: application/json" \
+            --data @payload.json
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
