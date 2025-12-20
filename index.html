@@ -2,29 +2,46 @@
 <html lang="vi">
 <head>
   <meta charset="utf-8">
-  <title>Newspaper</title>
+  <title>Traumatic News</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Fonts (có thể đổi sau) -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Lora:wght@400;700&family=Special+Elite&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<div class="newspaper-container">
-  <header>
-    <h1 class="masthead"></h1>
-    <div class="sub-masthead">
-      <span class="issue"></span>
-      <span class="date"></span>
-      <span class="weather"></span>
-    </div>
-  </header>
+  <!-- Nền tối bên ngoài -->
+  <div class="page-wrapper">
 
-  <main id="articles"></main>
+    <!-- Tờ báo -->
+    <div class="newspaper-container">
 
-  <aside class="news-snippets">
-    <h3>TELEGRAPH SNIPPETS</h3>
-    <ul id="snippets"></ul>
-  </aside>
-</div>
+      <!-- Header -->
+      <header class="newspaper-header">
+        <h1 class="masthead"></h1>
 
-<script src="render.js"></script>
-</body>
-</html>
+        <div class="sub-masthead">
+          <span class="issue"></span>
+          <span class="date"></span>
+          <span class="weather"></span>
+        </div>
+      </header>
+
+      <!-- Nội dung chính -->
+      <main class="main-content">
+
+        <!-- Cột bài viết -->
+        <section class="articles" id="articles">
+          <!-- JS sẽ render article ở đây -->
+        </section>
+
+        <!-- Cột tin ngắn -->
+        <aside class="sidebar">
+          <div class="news-snippets">
+            <h3>TELEGRAPH SNIPPETS</h3>
+            <ul id="snippets">
+              <!-- JS sẽ
