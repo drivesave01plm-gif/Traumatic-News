@@ -11,6 +11,10 @@
         "major": true,
         "title": "TRAGEDY AT MORIA: MEGA ROOM COLLAPSE!",
         "subhead": "Mining Operations Halted on 2nd Floor; Ducks Mourned.",
+        "image": {
+          "src": "https://drivesave01plm-gif.github.io/Traumatic-News/images/OI.jpg",
+          "alt": "Collapsed mining chamber in Moria"
+        },
         "paragraphs": [
           "Disaster struck the Dwarven halls of Moria yesterday.",
           "While miraculously no Dwarves were injured, two ducks were lost."
@@ -31,34 +35,43 @@
         "type": "decree",
         "title": "OFFICIAL DECREE: THE INDUSTRIAL PAUSE",
         "paragraphs": [
+          "HEAR YE! By order of the Server Administration.",
           "Technological progression is hereby BLOCKADED at Medium Voltage (MV).",
           "Today, we build in Steel."
+        ]
+      },
+      {
+        "type": "article",
+        "title": "THE GREAT ROMAN TRADE HUB",
+        "paragraphs": [
+          "A massive trade hub has been announced for Rome.",
+          "Neighbors are concerned."
         ]
       }
     ],
 
     "right": [
       {
+        "type": "article",
+        "title": "ENVIRONMENTAL CONCERNS IN ROME",
+        "image": {
+          "src": "images/OI.jpg",
+          "alt": "Garbage accumulation in Rome"
+        },
+        "paragraphs": [
+          "Qin Shi Huang has raised alarms regarding massive garbage accumulation.",
+          "The server's first major environmental debate has begun."
+        ]
+      },
+      {
         "type": "snippets",
         "items": [
           "LOCAL WITCH DECREE: All must receive moss.",
           "HERMIT REGRETS choosing to live too far away.",
-          "SURVIVAL FAIL: Sabertooth kill, hide lost in river."
+          "SURVIVAL FAIL: Sabertooth kill, hide lost in river.",
+          "SPA DAY GONE WRONG: Tashania stuck in thermal spring."
         ]
       }
-    
-    {
-  "type": "article",
-  "title": "ENVIRONMENTAL CONCERNS IN ROME",
-  "image": {
-    "src": "https://drivesave01plm-gif.github.io/Traumatic-News/images/OI.jpg",
-    "alt": "Garbage accumulation in Rome"
-  },
-  "paragraphs": [
-    "Qin Shi Huang has raised alarms regarding massive garbage accumulation in Rome.",
-    "The debate has sparked the server's first major environmental crisis."
-       ]
-      } 
     ]
   }
 }
