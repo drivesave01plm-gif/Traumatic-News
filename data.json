@@ -64,9 +64,9 @@
         ]
       },
       {
-        "type": "snippets",
+        "type": "test",
         "items": [
-          "LOCAL WITCH DECREE: All must receive moss.",
+          "test",
           "HERMIT REGRETS choosing to live too far away.",
           "SURVIVAL FAIL: Sabertooth kill, hide lost in river.",
           "SPA DAY GONE WRONG: Tashania stuck in thermal spring."
