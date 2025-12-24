@@ -4,75 +4,74 @@
   "weather": "Weather: Optimal for Blasting",
   "footer": "The Traumatic News is printed weekly (or whenever we feel like it).",
 
-  "columns": {
-    "left": [
-      {
-        "type": "article",
-        "major": true,
-        "title": "TRAGEDY AT MORIA: MEGA ROOM COLLAPSE!",
-        "subhead": "Mining Operations Halted on 2nd Floor; Ducks Mourned.",
-        "image": {
-          "src": "https://drivesave01plm-gif.github.io/Traumatic-News/images/OI.jpg",
-          "alt": "Collapsed mining chamber in Moria"
-        },
-        "paragraphs": [
-          "Disaster struck the Dwarven halls of Moria yesterday.",
-          "While miraculously no Dwarves were injured, two ducks were lost."
-        ]
+"columns": {
+  "left": [
+    {
+      "type": "article",
+      "major": true,
+      "title": "THE NIGHT THE FORGE WENT SILENT",
+      "subhead": "Power Failure Leaves an Entire District in Darkness.",
+      "image": {
+        "src": "https://drivesave01plm-gif.github.io/Traumatic-News/images/OI.jpg",
+        "alt": "Darkened industrial district at night"
       },
-      {
-        "type": "article",
-        "title": "DWARVEN INGENUITY BREACHES NEW FRONTIERS",
-        "paragraphs": [
-          "Engineers celebrated the invention of the Water Wheel.",
-          "Blast Furnace efficiency has reached its peak."
-        ]
-      }
-    ],
+      "paragraphs": [
+        "Late last night, the central forge district abruptly lost all power after an unexplained overload.",
+        "Witnesses reported sparks, alarms, and a sudden silence as machines ground to a halt."
+      ]
+    },
+    {
+      "type": "article",
+      "title": "ENGINEERS SCRAMBLE TO CONTAIN DAMAGE",
+      "paragraphs": [
+        "Emergency crews were dispatched within minutes to assess the situation.",
+        "Officials claim the damage is contained, though repairs may take several days."
+      ]
+    }
+  ],
 
-    "middle": [
-      {
-        "type": "decree",
-        "title": "OFFICIAL DECREE: THE INDUSTRIAL PAUSE",
-        "paragraphs": [
-          "HEAR YE! By order of the Server Administration.",
-          "Technological progression is hereby BLOCKADED at Medium Voltage (MV).",
-          "Today, we build in Steel."
-        ]
-      },
-      {
-        "type": "article",
-        "title": "THE GREAT ROMAN TRADE HUB",
-        "paragraphs": [
-          "A massive trade hub has been announced for Rome.",
-          "Neighbors are concerned."
-        ]
-      }
-    ],
+  "middle": [
+    {
+      "type": "decree",
+      "title": "OFFICIAL NOTICE: RESTRICTED POWER USAGE",
+      "paragraphs": [
+        "BY ORDER OF THE COUNCIL.",
+        "All non-essential machinery is to remain offline until further notice.",
+        "Failure to comply may result in sanctions."
+      ]
+    },
+    {
+      "type": "article",
+      "title": "MERCHANTS FEAR SUPPLY SHORTAGES",
+      "paragraphs": [
+        "Local merchants are already reporting delays in production and transport.",
+        "Prices for basic materials are expected to rise if the outage continues."
+      ]
+    }
+  ],
 
-    "right": [
-      {
-        "type": "article",
-        "title": "BREAKING NEWS: KILLER ON THE LOOSE",
-        "subhead": "Unconfirmed reports spread across the server.",
-        "image": {
-          "src": "https://drivesave01plm-gif.github.io/Traumatic-News/images/OI.jpg",
-          "alt": "Breaking news scene"
-        },
-        "paragraphs": [
-          "Early reports suggest a violent incident involving a mysterious attacker.",
-          "Authorities urge citizens to remain calm while investigations continue."
-        ]
+  "right": [
+    {
+      "type": "article",
+      "title": "BREAKING NEWS: UNKNOWN FIGURE SEEN NEAR FORGE",
+      "subhead": "Rumors Spread Faster Than Facts.",
+      "image": {
+        "src": "https://drivesave01plm-gif.github.io/Traumatic-News/images/OI.jpg",
+        "alt": "Shadowy figure near industrial buildings"
       },
-      {
-        "type": "snippets",
-        "items": [
-          "TEST MESSAGE: Emergency broadcast system trial.",
-          "HERMIT REGRETS choosing to live too far away.",
-          "SURVIVAL FAIL: Sabertooth kill, hide lost in river.",
-          "SPA DAY GONE WRONG: Tashania stuck in thermal spring."
-        ]
-      }
-    ]
-  }
+      "paragraphs": [
+        "Several residents claim to have seen a cloaked figure moments before the blackout.",
+        "Authorities have neither confirmed nor denied these reports."
+      ]
+    },
+    {
+      "type": "snippets",
+      "items": [
+        "WORKSHOP GOSSIP: Some say the machines were pushed too hard.",
+        "HERMIT SIGHTING: A reclusive engineer was seen entering the city at dawn.",
+        "SURVIVAL FAIL: Worker drops rare component into molten slag.",
+        "ODDITY: A single lamp remained lit throughout the entire blackout."
+      ]
+    }
+  ]
 }
