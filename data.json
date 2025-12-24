@@ -52,21 +52,22 @@
 
     "right": [
       {
-        "type": "Breaking New",
-        "title": "Killer ...",
+        "type": "article",
+        "title": "BREAKING NEWS: KILLER ON THE LOOSE",
+        "subhead": "Unconfirmed reports spread across the server.",
         "image": {
           "src": "https://drivesave01plm-gif.github.io/Traumatic-News/images/OI.jpg",
-          "alt": "Garbage accumulation in Rome"
+          "alt": "Breaking news scene"
         },
         "paragraphs": [
-          "Qin Shi Huang has raised alarms regarding massive garbage accumulation.",
-          "The server's first major environmental debate has begun."
+          "Early reports suggest a violent incident involving a mysterious attacker.",
+          "Authorities urge citizens to remain calm while investigations continue."
         ]
       },
       {
-        "type": "test",
+        "type": "snippets",
         "items": [
-          "test",
+          "TEST MESSAGE: Emergency broadcast system trial.",
           "HERMIT REGRETS choosing to live too far away.",
           "SURVIVAL FAIL: Sabertooth kill, hide lost in river.",
           "SPA DAY GONE WRONG: Tashania stuck in thermal spring."
