@@ -35,41 +35,185 @@ https://<your-username>.github.io/Traumatic-News/
 
 ---
 
+## 📰 Editing Articles – `data.json` Guide
+
+The entire newspaper is powered by a single file: **`data.json`**.
+
+You do **not** need to edit HTML or JavaScript.
+Updating this file will automatically update the website (and Discord, if automation is enabled).
+
+---
+
+### 📁 File Structure Overview
+
+```json
+{
+  "masthead": "",
+  "issue": "",
+  "weather": "",
+  "footer": "",
+  "columns": {
+    "left": [],
+    "middle": [],
+    "right": []
+  }
+}
+```
+
+---
+
+### 🏷 Header Fields
+
+```json
+"masthead": "Traumatic News",
+"issue": "VOL. II – The New Age",
+"weather": "Weather: Optimal for Blasting",
+"footer": "The Traumatic News is printed weekly (or whenever we feel like it)."
+```
+
+- **masthead** – Newspaper name (do not remove)
+- **issue** – Issue number / era
+- **weather** – Flavor text (RP / meme friendly)
+- **footer** – Footer text at the bottom of the page
+
+⚠️ Keep the keys unchanged. Only edit the text values.
+
+---
+
+### 🧱 Columns Layout
+
+The page is split into **three columns**:
+
+- **left** → Main headlines, major stories
+- **middle** → Official notices, decrees, analysis
+- **right** → Breaking news, images, short snippets
+
+---
+
+### 📰 Article Block
+
+```json
+{
+  "type": "article",
+  "title": "ARTICLE TITLE",
+  "paragraphs": [
+    "First paragraph.",
+    "Second paragraph."
+  ]
+}
+```
+
+---
+
+### ⭐ Major Headline Article
+
+```json
+{
+  "type": "article",
+  "major": true,
+  "title": "MAIN HEADLINE",
+  "subhead": "Optional subheading text.",
+  "image": {
+    "src": "https://example.com/image.jpg",
+    "alt": "Image description"
+  },
+  "paragraphs": [
+    "Main story paragraph one.",
+    "Main story paragraph two."
+  ]
+}
+```
+
+- **major: true** → Large headline style
+- **subhead** → Optional
+- **image** → Must be a **public URL** (GitHub Pages or Discord CDN)
+
+---
+
+### 📜 Official Decree Block
+
+```json
+{
+  "type": "decree",
+  "title": "OFFICIAL DECREE TITLE",
+  "paragraphs": [
+    "Official message line one.",
+    "Official message line two."
+  ]
+}
+```
+
+Used for:
+- Server rules
+- Admin announcements
+- Official notices
+
+---
+
+### 📡 Snippets Block (Short News)
+
+```json
+{
+  "type": "snippets",
+  "items": [
+    "Short news item one.",
+    "Short news item two.",
+    "Short news item three."
+  ]
+}
+```
+
+Used for:
+- Gossip
+- Minor events
+- Humor / flavor text
+
+---
+
 ## ⚠️ Important Notes
 
-- Do **NOT** open `index.html` using `file://`
-- The site uses `fetch()` and requires GitHub Pages (or a web server)
-- If the layout loads but content is missing:
-  - Check `data.json` for syntax errors
-  - Verify `data.json` is accessible at:
-    `https://<your-username>.github.io/Traumatic-News/data.json`
+- Only supported `type` values:
+  - `article`
+  - `decree`
+  - `snippets`
+- `paragraphs` must always be an array
+- Do **not** remove `left`, `middle`, or `right`
+- JSON does **not** allow comments
+- Always check commas and closing brackets
 
-## Cache Issue (Very Important)
+### Cache Issues
 
-- GitHub Pages and browsers may cache old versions of HTML, CSS, or JavaScript files.
-- If you update files but the site still shows old or broken content:
-  - Press `Ctrl + Shift + R` (Windows / Linux)
-  - Press `Cmd + Shift + R` (macOS)
-- This forces a hard reload and clears the browser cache.
+If changes do not appear after updating files:
+
+- Press **Ctrl + Shift + R** (Windows / Linux)
+- Press **Cmd + Shift + R** (macOS)
+
+This forces a hard refresh and clears cached files.
 
 ---
 
 ## 🔄 Updating Content
 
 1. Edit `data.json`
-2. Commit and push changes
-3. Refresh the site (hard refresh if needed)
+2. Commit and push changes to `main`
+3. Hard refresh the site (**Ctrl + Shift + R**)
 
 GitHub Pages will redeploy automatically.
 
 ---
 
 ## 📜 License & Author
-**Author:** BlackSword  
+
+**Author:** BlackSword
 
 This project is released for educational and creative use.
 You are free to use, modify, and adapt this project for non-commercial and personal projects.
 
-For contact, attribution, or collaboration inquiries, visit:
+For contact, attribution, or collaboration inquiries:
+
 🔗 https://drivesave01plm-gif.github.io/My-bio/
 
+---
+
+> A newspaper is not just information —  
+> it is atmosphere, bias, rumor, and memory.
